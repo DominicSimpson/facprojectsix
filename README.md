@@ -6,7 +6,7 @@
 
 ###### For my Feature, I decided to construct a game based on the Greek legend of Theseus & the Minotaur, the background of which I've included on the page with the game. I wanted the Minotaur to be at the centre of the Labyrinth, and a number of Theseus sprites to navigate the Labyrinth and reach the Minotaur, whereupon they slay it. I envisaged that each Theseus would be timed as they made their way through the maze to reach Theseus, and each would be timed. The real objective of the game would be to time each Theseus sprite, and compare them, with a message on screen displaying which Theseus reached the Minotaur in the quickest time. 
 
-## Preparation and Considerations
+## Planning, Preparation, and Considerations
 
 ###### Paul Vickers' book 'How To Think Like A Programmer', which I was introduced to when studying a stand-alone module in Problem-Solving for Programming module at Birkbeck, was helpful in instilling in me a rational, analytical, programming mindset, in which problem solving and planning takes up the majority of the time, with the coding only taking place afterwards. The book gets across helping to solve the problem of what is required first before only committing to the code. 
 
@@ -30,4 +30,4 @@
 
 ###### I then had to think about how many Theseus sprites I wanted. Initially I thought of four, to compare with each other, but this seemed excessive when the point of the game could be achieved with two. I also considered at one point having a red line follow each Theseus as they made their way through the Labyrinth, symbolising the ball of thread that Theseus took with him to find his way out of the maze after slaying the Minotaur, but this never came to fruition due to the complexity of working on the project. 
 
-###### My next step was to construct a wireframe of a Labyrinth. For this, I used Google Sheets 
+###### My next step was to construct a wireframe of the Labyrinth, with black walls and white floors. For this, I used Google Sheets, where I experimented with different sizes of Labryinth, and permutations of wall layout.    
