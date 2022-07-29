@@ -98,7 +98,7 @@ button#left {
   margin-right: 5px;
 }
 
-#controls button::before {
+#controls button::before { /* uses :before pseudoselector to insert arrows in the button controls  */
   content:'';
   width: 0px;
   position: absolute;

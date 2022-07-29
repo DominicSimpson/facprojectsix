@@ -1,13 +1,14 @@
-let levels = [];
-let levels1 = [];
+let levels = []; // first level
+let levels1 = []; // second level
 let firsTime = 0;
-let startFlag = false;
+let startFlag = false; // boolean that controls the on-screen buttons and ensures that they
+                        // they cannot work until the Start button has been pressed
 let playerOneWon = false;
 let playerTwoWon = false;
 
-levels[0] = {
+levels[0] = { // Level 1
   map: [
-    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1], // 0 represents floor tile; 1 represents wall tile
     [1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1],
     [1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1],
     [1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1],
@@ -28,7 +29,7 @@ levels[0] = {
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   ],
   theseus: {
-    // Theseus sprite beginning position
+    // Theseus sprite beginning position in Level 1
     x: 1,
     y: 0,
   },
@@ -40,7 +41,7 @@ levels[0] = {
   theme: "default",
 };
 
-levels1[0] = {
+levels1[0] = { // Level Two
   map: [
     [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1],
     [1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1],
@@ -63,7 +64,7 @@ levels1[0] = {
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   ],
   theseus: {
-    // Second Theseus sprite beginning position
+    // Second Theseus sprite beginning position in Level 2
     x: 13,
     y: 0,
   },
@@ -82,6 +83,8 @@ const startBtn = document.querySelector('#start-button'); // Variable for Start 
 
 // The id being passed in as the first argument is the id of the DOM element
 // The two level objects are being passed in as the second argument
+// Player is passed as a third argument in order to distinguish between the two Theseuses 
+
 let playerName;
 
 function Game(id, level , player) {
@@ -101,8 +104,8 @@ function Game(id, level , player) {
   // Inherits the level's properties: map, Theseus start for each of the two levels, Minotaur position in centre
   this.map = level.map;
   this.theme = level.theme;
-  this.theseus = { ...level.theseus }; // spread operator
-  // console.log('theseus',this.theseus);
+  this.theseus = { ...level.theseus }; // spread operator in order to account for movement of Theseus
+                                      // and transition to second level
   this.goal = { ...level.goal };
 }
 
@@ -113,7 +116,7 @@ Game.prototype.populateMap = function() {
 
   this.el.className = 'game-container ' + this.theme;
 
-  let tiles = document.getElementById('tiles');
+  let tiles = document.getElementById('tiles'); // references the DOM for floor and wall tiles
 
   for (var y = 0; y < this.map.length; ++y) {
 
@@ -123,23 +126,19 @@ Game.prototype.populateMap = function() {
 
       let tileType = this.tileTypes[tileCode];
 
-      let tile = this.createEl(x, y, tileType);
+      let tile = this.createEl(x, y, tileType); // 0 => floor, 1 => wall
 
-      tiles.appendChild(tile); // add to tile layer
+      tiles.appendChild(tile); // append to tile layer
     }
   }
 };
 
-// Creates a tile or sprite element
-
-// {Number} x = The x coordinate in map
-// {Number} y = The y coordinate in map
+// Creates a tile that can be either floor or wall
 
 Game.prototype.createEl = function(x,y,type) {
   // create one tile.
-  let el = document.createElement('div');
+  let el = document.createElement('div'); // grabs the DOM element
 
-  // two class names: one for tile, one for the tile type.
   el.className = type;
 
   // set width and height of tile based on the passed-in dimensions(34px for each tile)
@@ -154,17 +153,15 @@ Game.prototype.createEl = function(x,y,type) {
   return el;
 };
 
-// Places the Theseus or Minotaur (goal) sprites
-
-// The type being passed in as an argument is either a sprite or a tile
+// Places the Theseus or Minotaur (the goal) sprites
 
 Game.prototype.placeSprite = function(type) {
-  // syntactic sugar
+
   let x = this[type].x;
 
   let y = this[type].y;
 
-  // reuse the createTile function
+  
   let sprite = this.createEl(x,y,type);
 
   sprite.id = type;
@@ -174,7 +171,7 @@ Game.prototype.placeSprite = function(type) {
   // grab the layer
   let layer = this.el.querySelector('#sprites');
 
-  layer.appendChild(sprite);
+  layer.appendChild(sprite); // appends the Sprite
 
   return sprite;
 };
@@ -185,17 +182,18 @@ Game.prototype.sizeUp = function() {
   // Sizing up of inner container
   let map = this.el.querySelector('.game-map');
 
-  // Inner container, height, and width in pixels
+  // Inner container, height, and width in pixels (34)
   map.style.height = this.map.length * this.tileDim + 'px';
 
-  map.style.width = this.map[0].length * this.tileDim + 'px';
+  map.style.width = this.map[0].length * this.tileDim + 'px'; // Sets the map's width based on the number of tiles
+                                                              // in the first row
 };
 
 
 // Moves the Theseus sprite using a switch statement
 
 Game.prototype.moveTheseus = function(event) {
-  event.preventDefault();
+  event.preventDefault(); // stops any unwanted key presses which are not the ones below
 
   if (event.keyCode < 37 || event.keyCode > 40) {
     return;
@@ -337,8 +335,8 @@ Game.prototype.buttonListeners = function() {
     up.addEventListener("mousedown", function() {
       obj.moveUp(); // Moves Theseus upwards using the onscreen buttons
       obj.checkGoal(); // Checks if Theseus has reached the Minotaur
-      obj.endTimer();
-      if(obj.theseus.x===13){ // Starting position for second Theseus sprite
+      obj.endTimer();  // Same as above, and if so, ends Timer
+      if(obj.theseus.x===13){ // Ensures that the onscreen buttons work in second level
         Game('game-container-2',levels1[0],'playerTwo');
       }
     });
@@ -347,7 +345,7 @@ Game.prototype.buttonListeners = function() {
       obj.moveDown(); // Moves Theseus downwards using the onscreen buttons
       obj.checkGoal();
       obj.endTimer();
-      if(obj.theseus.x===13){ // Starting position for second Theseus sprite
+      if(obj.theseus.x===13){ 
         Game('game-container-2',levels1[0],'playerTwo');
       }
     });
@@ -356,7 +354,7 @@ Game.prototype.buttonListeners = function() {
       obj.moveLeft(); // Moves Theseus left using the onscreen buttons
       obj.checkGoal();
       obj.endTimer();
-      if(obj.theseus.x===13){ // Starting position for second Theseus sprite
+      if(obj.theseus.x===13){ // 
         Game('game-container-2',levels1[0],'playerTwo');
       }
     });
@@ -365,7 +363,7 @@ Game.prototype.buttonListeners = function() {
       obj.moveRight(); // Moves Theseus right using the onscreen buttons
       obj.checkGoal();
       obj.endTimer();
-      if(obj.theseus.x===13){ // Starting position for second Theseus sprite
+      if(obj.theseus.x===13){ 
         Game('game-container-2',levels1[0],'playerTwo');
       }
     });
@@ -387,7 +385,8 @@ Game.prototype.placeLevel = function() {
   this.theseus.el = theseusSprite;
 };
 
-// Detects if user has pressed onscreen buttons or clicked on maze to progress to next level
+// Detects if user has pressed onscreen buttons or clicked on maze to progress to next level after first Theseus 
+// has reached Minotaur
 
 Game.prototype.addListeners = function() {
 
@@ -408,15 +407,15 @@ Game.prototype.addMazeListener = function() {
 
   map.addEventListener("mousedown", function (e) {
     if (obj.theseus.y != obj.goal.y || obj.theseus.x != obj.goal.x) {
-      return;
+      return; // Gets out of function if Theseus has not reached the Minotaur
     }
 
-    obj.changeLevel();
+    obj.changeLevel(); // Logic for changing the level
 
-    let layers = obj.el.querySelectorAll('.layer');
+    let layers = obj.el.querySelectorAll('.layer'); // Clears the tile and sprite layers and adds new sprites
 
-    for (layer of layers) {
-      layer.innerHTML = "";
+    for (i = 0; i < layers; i++) { //layer of layers
+      layers.innerHTML = "";
     }
 
     obj.placeLevel();
@@ -428,19 +427,19 @@ Game.prototype.addMazeListener = function() {
 
 Game.prototype.changeLevel = function() {
 
-  this.level_idx++;
+  this.level_idx++; // increments to next level
 
-  let level = levels1[0];
+  let level = levels1[0]; // changes from levels[0] to levels1[0]
 
   this.map = level.map;
 
   this.theme = level.theme;
 
-  this.theseus = { ...level.theseus };
+  this.theseus = { ...level.theseus }; // spread operator for movement of Theseus
 
   this.goal = { ...level.goal };
 
-  startTimer2();
+  startTimer2(); // triggers the Timer for Level 2
 
 };
 
@@ -473,7 +472,7 @@ init();
 
 startBtn.addEventListener("click", () => {
 
-  startFlag = true;
+  startFlag = true; // controls Button Listeners function, which handles the on-screen buttons
 
   myGame.theseus.el = theseusSprite;
 
@@ -490,7 +489,7 @@ const timer1 = document.getElementById('timer');
 const timer2 = document.getElementById('timer');
 
 let timerInterval1; let timerInterval2;
-let finalTimeZone1; let finalTimeZone2;// Records the time that Theseus reaches his goal (the Minotaur)
+let finalTimeZone1; let finalTimeZone2;// Records the time that Theseus reaches his goal (the Minotaur) in each level
 
 
 if (levels[0] && playerName ==='playerOne') {
@@ -586,7 +585,7 @@ function startTimer2() {
 }
 
 
-// Stops the timer if Theseus gets to the goal (the Minotaur)
+// Stops the timer if Theseus gets to the goal (the Minotaur) in each level
 
 Game.prototype.endTimer = function() {
 
