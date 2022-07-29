@@ -4,7 +4,7 @@
 
 ## Preamble
 
-###### For my Feature, I decided to construct a game based on the Greek legend of Theseus & the Minotaur. I wanted the Minotaur to be at the centre, and a number of Theseus sprites to navigate the Labyrinth and reach the Minotaur, whereupon they slay it. I envisaged that each Theseus would be timed as they made their way through the maze to reach Theseus, and each would be timed. The real objective of the game would be to time each Theseus sprite, and compare them, with a message on screen displaying which Theseus reached the Minotaur in the quickest time. 
+###### For my Feature, I decided to construct a game based on the Greek legend of Theseus & the Minotaur, the background of which I've included on the page with the game. I wanted the Minotaur to be at the centre of the Labyrinth, and a number of Theseus sprites to navigate the Labyrinth and reach the Minotaur, whereupon they slay it. I envisaged that each Theseus would be timed as they made their way through the maze to reach Theseus, and each would be timed. The real objective of the game would be to time each Theseus sprite, and compare them, with a message on screen displaying which Theseus reached the Minotaur in the quickest time. 
 
 ## Preparation and Considerations
 
@@ -28,6 +28,6 @@
 13.	Visual controls on the screens
 14.	Final results that show which Theseus was the quickest to display the Minotaur
 
+###### I then had to think about how many Theseus sprites I wanted. Initially I thought of four, to compare with each other, but this seemed excessive when the point of the game could be achieved with two. I also considered at one point having a red line follow each Theseus as they made their way through the Labyrinth, symbolising the ball of thread that Theseus took with him to find his way out of the maze after slaying the Minotaur, but this never came to fruition due to the complexity of working on the project. 
 
-
-Initially I came up with a number of four Theseuses, but time constraints dictated otherwise, and it seemed less important when the
+###### My next step was to construct a wireframe of a Labyrinth. For this, I used Google Sheets 
