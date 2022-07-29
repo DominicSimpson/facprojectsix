@@ -15,12 +15,12 @@
 -	The game map
 -	The controls
 -	The layers: 
-1.	Floor
-2.	Walls
+ - Floor
+ - Walls
 -	Sprites:
-1.	Theseus * 4
-2.	Minotaur
--	Background on screen to the legend of Theseus and Minotaur
+  - Theseus * ?
+  - Minotaur
+-	Background context on screen to the legend of Theseus and Minotaur
 -	Score counter
 -	Start / Pause button
 -	Success message within the game map that appears when Theseus slays the minotaur, displaying the time that has taken for each Theseus to do so
