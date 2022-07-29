@@ -1,9 +1,8 @@
 let levels = []; // first level
 let levels1 = []; // second level
-let firsTime = 0;
-let startFlag = false; // boolean that controls the on-screen buttons and ensures that they
+let startFlag = false; // boolean that controls both the keyboard buttons and on-screen buttons and ensures that they
                         // they cannot work until the Start button has been pressed
-let playerOneWon = false;
+let playerOneWon = false; // booleans that mark when each has level has been completed / 'won'
 let playerTwoWon = false;
 
 levels[0] = { // Level 1
@@ -87,13 +86,14 @@ const startBtn = document.querySelector('#start-button'); // Variable for Start 
 
 let playerName;
 
-function Game(id, level , player) {
+function Game(id, level , player) { // this is the Game prototype that is referenced in every function below
   
   playerName = player;
   
   console.log('level',player);
   
-  this.el = document.getElementById(id);
+  this.el = document.getElementById(id); // the 'this' keyword references every specific function as part of the overall
+                                         // Game prototype
 
   this.level_idx = 0; // the two levels of the game
 
@@ -111,7 +111,7 @@ function Game(id, level , player) {
 
 // Populates the map with each tile via a nested loop. X and Y are based on the normal coordinate system of
 // x: horizontal axis, y: vertical axis
-
+console.log('game',Game.prototype);
 Game.prototype.populateMap = function() {
 
   this.el.className = 'game-container ' + this.theme;
@@ -411,13 +411,6 @@ Game.prototype.addMazeListener = function() {
     }
 
     obj.changeLevel(); // Logic for changing the level
-
-    let layers = obj.el.querySelectorAll('.layer'); // Clears the tile and sprite layers and adds new sprites
-
-    for (i = 0; i < layers; i++) { //layer of layers
-      layers.innerHTML = "";
-    }
-
     obj.placeLevel();
     obj.checkGoal();
   });

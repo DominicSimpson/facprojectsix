@@ -18,15 +18,16 @@ figcaption {
 	margin:					0.5em auto;
 	}
 
-.row {
-  display: flex;
+.row {  
+  display:          flex;
+  align-items:      center;
+  justify-content:  center
 }
 
 .image {
-  /* float: left; */
-  /* width: 50%; */
-  margin: auto;
-  width: 30%;
+  margin-right: 24px;
+
+ /* margin: 0px 10px; */
 }
 
 #timer {
