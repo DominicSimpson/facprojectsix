@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Theseus &amp; The Minotaur</title>
+    <link rel="stylesheet" href="css/week_8d.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+Great+Primer&family=Libre+Baskerville:ital@1&display=swap" rel="stylesheet">
+  </head>
+  
+  <body>
+
+    <!-- Text -->
+
+    <h1>Theseus &amp; The Minotaur</h1>
+
+    <div class="row">
+      <div class="image">
+				<img src="images/theseus_resize.jpg" alt="Photo of Drop City commune, USA">
+				<figcaption>Theseus</figcaption>
+      </div>
+
+      <div class="image">
+				<img src="images/minotaur_resize.jpg" alt="Photo of Drop City commune, USA">
+				<figcaption>The Minotaur</figcaption>
+			</div>
+    
+    </div>
+
+    <p>In Greek legend, King Minos of Crete waged war against the city of Athens, and the Athenians who lived in the city. 
+      He demanded that at nine-year intervals, seven Athenian boys and seven Athenian girls were to be sent to Crete to be 
+      devoured by the Minotaur &#9472; a half-man, half-bull monster who dwelled in the Labyrinth, a disorientating maze-like 
+      structure. The Labyrinth was created by Daedalus, a skilled architect and craftsman.
+      The Minotaur was so wild a beast that it was kept imprisoned in the Labyrinth under guard.</p>
+
+      <p>Meanwhile, Theseus &#9472; the son of Aegeus, King of Athens &#9472; was horrified at the practice of seeing young Athenians 
+      slaughtered so needlessly by the Minotaur at King Minos&#8217; orders. He took it upon himself to take the place of 
+      one of the youths and set off to Crete. As with the others, Theseus was stripped of his weapons once on the boat.</p> 
+      
+      <p>On his arrival, Ariadne, King Minos&#8217; daughter, fell in love with Theseus. 
+        On the advice of Daedalus, Ariadne gave Theseus a ball of thread so that he could find his way out of the Labyrinth, 
+        and took him to it. 
+        As soon as Theseus entered the Labyrinth, he tied one end of the ball of string to the doorpost and brandished his 
+        sword which he had kept hidden from the guards inside his tunic. Theseus came to the heart of the Labyrinth, where 
+        he found the sleeping Minotaur. The beast awoke and a tremendous fight then occurred. Theseus overpowered the 
+        Minotaur and killed the beast with his sword. Using the string, Theseus then found his way out of the Labyrinth 
+        and escaped with Ariadne and the young Athenians.
+      </p>
+
+      <p>In this game, there will be two Theseus sprites, one after another. 
+        The goal is to reach the Minotaur at the centre of the Labyrinth. Use the cursor keys or onscreen buttons to move each 
+        Theseus sprite and navigate the Labyrinth to reach the Minotaur and slay it. 
+        A timer will record how quickly each sprite has taken to reach the Minotaur; the winner is the one that has 
+        reached the Minotaur the quickest. This will be announced at the end of the game.</p>
+
+      <p>Press the Start button to begin.</p>
+
+
+    <!-- Timer -->
+    
+    <div class="container">
+      <div id="timer">00:00</div>
+      <button id="start-button">Start</button>
+    </div>
+
+
+    <!-- Game container -->
+    
+    <div id="game-container-1" class="game-container">
+      
+      <div id="map-and-controls"> 
+
+        <!-- Start game map -->
+        
+        <div id="game-map-1" class="game-map">
+          
+          <div id="tiles" class="layer"></div>
+          <div id="sprites" class="layer"></div>
+          <div id="message" class="hide"></div>
+        
+        </div>
+
+        <!-- Game controls -->
+
+        <div id="controls">
+
+          <button id="up"></button>
+
+          <div id="horiz">
+            <button id="left"></button>
+            <button id="right"></button>
+          </div>
+
+          <button id="down"></button>
+
+        </div>
+      
+      </div>
+
+      <!-- End game map -->
+    
+    </div>
+
+    <script src="scripts/week_8d.js"></script>
+  </body>
+</html>
+
