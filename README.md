@@ -10,7 +10,7 @@
 
 ###### Paul Vickers' book 'How To Think Like A Programmer', which I was introduced to when studying a stand-alone module in Problem-Solving for Programming module at Birkbeck, was helpful in instilling in me a rational, analytical, programming mindset, in which problem solving and planning takes up the majority of the time, with the coding only taking place afterwards. The book gets across helping to solve the problem of what is required first using pseudocode and other methods, before only committing to the code once the coder has understood what is necessary. Thus, being a coder is as much about problem-solving and planning as it is about actually sitting down and writing the code. 
 
-###### My first step was to think about what were required and write them down:
+###### My first step was to think about what were required and write them down in pseudocode.
 1.	The game container, which contains the game
 2.	The game map
 3.	The controls
