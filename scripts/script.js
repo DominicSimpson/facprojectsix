@@ -1,4 +1,4 @@
-let levels = []; // first level
+  let levels = []; // first level
 let levels1 = []; // second level
 let startFlag = false; // boolean that controls both the keyboard buttons and on-screen buttons and ensures that they
                         // they cannot work until the Start button has been pressed
