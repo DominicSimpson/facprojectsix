@@ -1,5 +1,3 @@
-# facprojectsix
-
 # THESEUS & THE MINOTAUR
 
 ## Preamble
